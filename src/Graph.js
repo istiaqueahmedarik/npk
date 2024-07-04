@@ -110,7 +110,8 @@ const SensorChart = () => {
         return (
             <div className="chart-container" key={dataKey}>
                 <h2>{`${label}`}</h2>
-                <div className='level'>{`( ${data[dataKey][data[dataKey].length - 1]?.toFixed(2)} )`}</div>
+                <div className='level'>{`( ${data[dataKey][data[dataKey].length - 1]?.toFixed(2)} ) ${dataKey === 'temperature' ? '°C' : dataKey === 'humidity' ? '%' : dataKey === 'ph' ? 'pH' : dataKey === 'conductivity' ? 'µS/cm' : dataKey === 'nitrogen' ? 'mg/kg' : dataKey === 'phosphorus' ? 'mg/kg' : dataKey === 'potassium' ? 'mg/kg' : ''}
+                `}</div>
                 <Line data={chartData} options={options} />
             </div>
         );
