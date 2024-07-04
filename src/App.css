@@ -2,6 +2,8 @@
   text-align: center;
 }
 
+
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,7 +34,74 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+.sensor-charts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(490px, 1fr));
+  height: 100vh;
+}
+
+.chart-container {
+  background-color: #f7f7f7;
+  margin: 20px;
+  border-radius: 10px;
+}
+
+.level {
+  background-color: #aaaaaa;
+  width: fit-content;
+  margin: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 999px;
+  color: white;
+  font-size: 1.1rem;
+
+}
+
+:root {
+  --darkreader-neutral-background: #131516;
+  --darkreader-neutral-text: #d8d4cf;
+  --darkreader-selection-background: #004daa;
+  --darkreader-selection-text: #e8e6e3;
+}
+
+.nav_head {
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  margin-left: 10px;
+}
+
+.nav_icon {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 30px;
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.nav_h {
+  font-size: 25px;
+  margin: 10px;
+}
+
+.nav_sh {
+  font-size: 20px;
+  margin: 10px;
+  font-weight: 100;
 }
