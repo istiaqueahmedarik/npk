@@ -5,7 +5,7 @@ import 'chart.js/auto';
 import NavBar from './NavBar';
 
 const ros = new ROSLIB.Ros({
-    url: 'ws://192.168.68.103:9090' // Replace with your ROSBridge WebSocket server URL
+    url: 'ws://192.168.68.111:9090' // Replace with your ROSBridge WebSocket server URL
 });
 
 const SensorChart = () => {
