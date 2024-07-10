@@ -17,6 +17,8 @@ const SensorChart = () => {
         nitrogen: [],
         phosphorus: [],
         potassium: [],
+        humidity2: [],
+        temperature2: [],
     });
     const [labels, setLabels] = useState([]);
 
@@ -38,6 +40,28 @@ const SensorChart = () => {
             ros: ros,
             name: '/sensor_data',
             messageType: 'std_msgs/String'
+        });
+        const dhtTopic = new ROSLIB.Topic({
+            ros: ros,
+            name: '/dht',
+            messageType: 'std_msgs/String'
+        });
+
+        dhtTopic.subscribe((message) => { 
+            const dhtData = message.data;
+            console.log('Received dht data:', dhtData);
+            const parsedData = dhtData.split(',').map(Number);
+            if (parsedData.length === 2) {
+                const [humidity2, temperature2] = parsedData;
+
+                setData(prevData => ({
+                    humidity2: updateDataArray(prevData.humidity2, humidity2),
+                    temperature2: updateDataArray(prevData.temperature2, temperature2),
+                }));
+                setLabels(prevLabels => updateDataArray(prevLabels, new Date().toLocaleTimeString()));
+            } else {
+                console.error('Received invalid dht data:', dhtData);
+            }
         });
 
         // Subscribe to the sensor data topic
@@ -128,6 +152,8 @@ const SensorChart = () => {
                 {generateChart('Nitrogen', 'orange', 'nitrogen')}
                 {generateChart('Phosphorus', 'brown', 'phosphorus')}
                 {generateChart('Potassium', 'cyan', 'potassium')}
+                {generateChart('Humidity2', 'blue', 'humidity2')}
+                {generateChart('Temperature2', 'red', 'temperature2')}
             </div>
             </div>
     );
